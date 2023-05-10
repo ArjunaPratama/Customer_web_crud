@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th="http://www.thymleaf.org" xmlns:xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Page</title>
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div class="container-fluid pt-2 pr-2 pb-0 pl-2">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <h4>
+                                Master Customer
+                            </h4>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="btn-group pull-right flex-wrap">
+                            <a class="h4" href="/customer/new">
+                                <button class="btn-primary">Add Customer</button>
+                            </a>
+                        <div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead style="background: gray">
+                <tr>
+                    <th>menu</th>
+                    <th>Id</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Kota</th>
+                    <th>Provinsi</th>
+                    <th>Tanggal registrasi</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <th:block th:each="customer: ${listCustomer}">
+                    <tr>
+                        <td>
+                            <div class="btn-group flex-wrap" style="margin: 10px">
+                                <a class="btn-primary" th:href="@{'/customer/edit/' +${customer.id}}" style="margin: 10px">
+                                    <button style="background: royalblue">Edit</button>
+                                </a>
+                                <a class="btn-danger" th:href="@{'/customer/delete/' +${customer.id}}" style="margin: 10px">
+                                    <button style="background: red">Delete</button>
+                                </a>
+                            <div>
+                        </td>
+                        <td>[[${customer.id}]]</td>
+                        <td>[[${customer.nama}]]</td>
+                        <td>[[${customer.alamat}]]</td>
+                        <td>[[${customer.kota}]]</td>
+                        <td>[[${customer.provinsi}]]</td>
+                        <td>[[${customer.tgl_registrasi}]]</td>
+                        <td>[[${customer.status}]]</td>
+                    </tr>
+                </th:block>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!--<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>-->
+
+</body>
+</html>
